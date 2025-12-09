@@ -1,0 +1,41 @@
+{% extends 'project/base.html' %}
+
+{% block title %}Delete Customer - Travel Booking System{% endblock %}
+
+{% block content %}
+<h1>Delete Customer</h1>
+
+<div class="detail-section">
+    <div class="alert alert-error">
+        <strong>Warning!</strong> Are you sure you want to delete the customer "{{ object.get_full_name }}"?
+        This action cannot be undone and will also delete all their bookings.
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-item">
+            <strong>Name</strong>
+            {{ object.get_full_name }}
+        </div>
+        <div class="detail-item">
+            <strong>Email</strong>
+            {{ object.email }}
+        </div>
+        <div class="detail-item">
+            <strong>Phone</strong>
+            {{ object.phone }}
+        </div>
+        <div class="detail-item">
+            <strong>Total Bookings</strong>
+            {{ object.bookings.count }}
+        </div>
+    </div>
+
+    <form method="post" style="margin-top: 2rem;">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'customer-detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

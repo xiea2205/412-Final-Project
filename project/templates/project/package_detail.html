@@ -1,0 +1,90 @@
+{% extends 'project/base.html' %}
+
+{% block title %}{{ package.name }} - Travel Booking System{% endblock %}
+
+{% block content %}
+<h1>{{ package.name }}</h1>
+
+<div class="detail-section">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <strong>Destination</strong>
+            <a href="{% url 'destination-detail' package.destination.pk %}">{{ package.destination.name }}, {{ package.destination.country }}</a>
+        </div>
+        <div class="detail-item">
+            <strong>Price</strong>
+            ${{ package.price }} per person
+        </div>
+        <div class="detail-item">
+            <strong>Duration</strong>
+            {{ package.duration_days }} days
+        </div>
+        <div class="detail-item">
+            <strong>Start Date</strong>
+            {{ package.start_date }}
+        </div>
+        <div class="detail-item">
+            <strong>End Date</strong>
+            {{ package.end_date }}
+        </div>
+        <div class="detail-item">
+            <strong>Available Spots</strong>
+            {% if package.available_spots > 0 %}
+                <span style="color: green; font-weight: bold;">{{ package.available_spots }}</span>
+            {% else %}
+                <span style="color: red; font-weight: bold;">Sold Out</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <h3>Itinerary</h3>
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 5px; white-space: pre-line; line-height: 1.8;">{{ package.itinerary }}</div>
+    </div>
+
+    <div class="btn-group" style="margin-top: 2rem;">
+        <a href="{% url 'package-list' %}" class="btn btn-secondary">Back to List</a>
+        <a href="{% url 'booking-create' %}" class="btn btn-success">Book Now</a>
+        <a href="{% url 'package-update' package.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'package-delete' package.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+
+<div class="detail-section">
+    <h2>Bookings for this Package</h2>
+    {% if bookings %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>People</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>#{{ booking.id }}</td>
+                <td>{{ booking.customer.get_full_name }}</td>
+                <td>{{ booking.booking_date|date:"M d, Y" }}</td>
+                <td>{{ booking.number_of_people }}</td>
+                <td>${{ booking.total_price }}</td>
+                <td>
+                    <span class="badge badge-{{ booking.status }}">{{ booking.get_status_display }}</span>
+                </td>
+                <td>
+                    <a href="{% url 'booking-detail' booking.pk %}" class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No bookings yet for this package.</p>
+    {% endif %}
+</div>
+{% endblock %}

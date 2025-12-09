@@ -1,0 +1,37 @@
+{% extends 'project/base.html' %}
+
+{% block title %}Delete Destination - Travel Booking System{% endblock %}
+
+{% block content %}
+<h1>Delete Destination</h1>
+
+<div class="detail-section">
+    <div class="alert alert-error">
+        <strong>Warning!</strong> Are you sure you want to delete the destination "{{ object.name }}"?
+        This action cannot be undone and will also delete all associated travel packages.
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-item">
+            <strong>Name</strong>
+            {{ object.name }}
+        </div>
+        <div class="detail-item">
+            <strong>Country</strong>
+            {{ object.country }}
+        </div>
+        <div class="detail-item">
+            <strong>Associated Packages</strong>
+            {{ object.packages.count }}
+        </div>
+    </div>
+
+    <form method="post" style="margin-top: 2rem;">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'destination-detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

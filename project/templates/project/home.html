@@ -1,0 +1,71 @@
+{% extends 'project/base.html' %}
+
+{% block title %}Home - Travel Booking System{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1>Welcome to Travel Booking System</h1>
+    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
+        Explore amazing destinations and book your dream vacation
+    </p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Destinations</h3>
+        <div class="stat-number">{{ total_destinations }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Available Packages</h3>
+        <div class="stat-number">{{ total_packages }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Total Bookings</h3>
+        <div class="stat-number">{{ total_bookings }}</div>
+    </div>
+</div>
+
+<section style="margin-top: 3rem;">
+    <h2>Featured Destinations</h2>
+    <div class="card-grid">
+        {% for destination in featured_destinations %}
+        <div class="card">
+            <h3>{{ destination.name }}</h3>
+            <p><strong>Country:</strong> {{ destination.country }}</p>
+            <p>{{ destination.description|truncatewords:30 }}</p>
+            <div class="btn-group">
+                <a href="{% url 'destination-detail' destination.pk %}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No destinations available.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section style="margin-top: 3rem;">
+    <h2>Upcoming Travel Packages</h2>
+    <div class="card-grid">
+        {% for package in upcoming_packages %}
+        <div class="card">
+            <h3>{{ package.name }}</h3>
+            <p><strong>Destination:</strong> {{ package.destination.name }}</p>
+            <p><strong>Price:</strong> ${{ package.price }}</p>
+            <p><strong>Duration:</strong> {{ package.duration_days }} days</p>
+            <p><strong>Start Date:</strong> {{ package.start_date }}</p>
+            <p><strong>Available Spots:</strong> {{ package.available_spots }}</p>
+            <div class="btn-group">
+                <a href="{% url 'package-detail' package.pk %}" class="btn btn-primary">View Details</a>
+                <a href="{% url 'booking-create' %}" class="btn btn-success">Book Now</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No packages available.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<div style="margin-top: 3rem; text-align: center;">
+    <a href="{% url 'package-list' %}" class="btn btn-primary" style="font-size: 1.2rem;">View All Packages</a>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'project/base.html' %}
+
+{% block title %}{{ destination.name }} - Travel Booking System{% endblock %}
+
+{% block content %}
+<h1>{{ destination.name }}</h1>
+
+<div class="detail-section">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <strong>Country</strong>
+            {{ destination.country }}
+        </div>
+        <div class="detail-item">
+            <strong>Created</strong>
+            {{ destination.created_at|date:"F d, Y" }}
+        </div>
+        <div class="detail-item">
+            <strong>Last Updated</strong>
+            {{ destination.updated_at|date:"F d, Y" }}
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <h3>Description</h3>
+        <p style="line-height: 1.8; color: #555;">{{ destination.description }}</p>
+    </div>
+
+    {% if destination.image_url %}
+    <div style="margin-top: 2rem;">
+        <h3>Image</h3>
+        <img src="{{ destination.image_url }}" alt="{{ destination.name }}" style="max-width: 100%; border-radius: 8px;">
+    </div>
+    {% endif %}
+
+    <div class="btn-group" style="margin-top: 2rem;">
+        <a href="{% url 'destination-list' %}" class="btn btn-secondary">Back to List</a>
+        <a href="{% url 'destination-update' destination.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'destination-delete' destination.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+
+<div class="detail-section">
+    <h2>Available Travel Packages</h2>
+    {% if packages %}
+    <div class="card-grid">
+        {% for package in packages %}
+        <div class="card">
+            <h3>{{ package.name }}</h3>
+            <p><strong>Price:</strong> ${{ package.price }}</p>
+            <p><strong>Duration:</strong> {{ package.duration_days }} days</p>
+            <p><strong>Start Date:</strong> {{ package.start_date }}</p>
+            <p><strong>Available Spots:</strong> {{ package.available_spots }}</p>
+            <div class="btn-group">
+                <a href="{% url 'package-detail' package.pk %}" class="btn btn-primary">View Package</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No packages available for this destination yet.</p>
+    <a href="{% url 'package-create' %}" class="btn btn-success">Create Package</a>
+    {% endif %}
+</div>
+{% endblock %}

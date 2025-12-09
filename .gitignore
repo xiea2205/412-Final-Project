@@ -1,0 +1,49 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.pyc
+__pycache__/
+.env
+
+# Claude Code
+.claude/
+
+# Documentation and Submission Files (not needed in repo)
+DEPLOYMENT_GUIDE.md
+QUICK_START.md
+README.md
+github_url.txt
+project_url.txt
+video_url.txt
+sample_user.txt

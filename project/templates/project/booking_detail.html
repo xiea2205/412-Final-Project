@@ -1,0 +1,75 @@
+{% extends 'project/base.html' %}
+
+{% block title %}Booking #{{ booking.id }} - Travel Booking System{% endblock %}
+
+{% block content %}
+<h1>Booking #{{ booking.id }}</h1>
+
+<div class="detail-section">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <strong>Customer</strong>
+            <a href="{% url 'customer-detail' booking.customer.pk %}">{{ booking.customer.get_full_name }}</a>
+        </div>
+        <div class="detail-item">
+            <strong>Email</strong>
+            {{ booking.customer.email }}
+        </div>
+        <div class="detail-item">
+            <strong>Phone</strong>
+            {{ booking.customer.phone }}
+        </div>
+        <div class="detail-item">
+            <strong>Travel Package</strong>
+            <a href="{% url 'package-detail' booking.travel_package.pk %}">{{ booking.travel_package.name }}</a>
+        </div>
+        <div class="detail-item">
+            <strong>Destination</strong>
+            <a href="{% url 'destination-detail' booking.travel_package.destination.pk %}">
+                {{ booking.travel_package.destination.name }}, {{ booking.travel_package.destination.country }}
+            </a>
+        </div>
+        <div class="detail-item">
+            <strong>Package Dates</strong>
+            {{ booking.travel_package.start_date }} to {{ booking.travel_package.end_date }}
+        </div>
+        <div class="detail-item">
+            <strong>Booking Date</strong>
+            {{ booking.booking_date|date:"F d, Y H:i" }}
+        </div>
+        <div class="detail-item">
+            <strong>Status</strong>
+            <span class="badge badge-{{ booking.status }}">{{ booking.get_status_display }}</span>
+        </div>
+        <div class="detail-item">
+            <strong>Number of People</strong>
+            {{ booking.number_of_people }}
+        </div>
+        <div class="detail-item">
+            <strong>Price per Person</strong>
+            ${{ booking.travel_package.price }}
+        </div>
+        <div class="detail-item">
+            <strong>Total Price</strong>
+            <span style="font-size: 1.5rem; font-weight: bold; color: #27ae60;">${{ booking.total_price }}</span>
+        </div>
+        <div class="detail-item">
+            <strong>Last Updated</strong>
+            {{ booking.updated_at|date:"F d, Y H:i" }}
+        </div>
+    </div>
+
+    {% if booking.notes %}
+    <div style="margin-top: 2rem;">
+        <h3>Notes</h3>
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 5px; white-space: pre-line; line-height: 1.8;">{{ booking.notes }}</div>
+    </div>
+    {% endif %}
+
+    <div class="btn-group" style="margin-top: 2rem;">
+        <a href="{% url 'booking-list' %}" class="btn btn-secondary">Back to List</a>
+        <a href="{% url 'booking-update' booking.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'booking-delete' booking.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endblock %}
