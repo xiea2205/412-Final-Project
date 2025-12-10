@@ -1,3 +1,9 @@
+# File: forms.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: Form definitions for the Travel Booking System application.
+# Provides model forms for CRUD operations with custom validation and widgets.
+
 from django import forms
 from .models import Destination, TravelPackage, Customer, Booking
 

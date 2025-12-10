@@ -1,0 +1,71 @@
+TRAVEL BOOKING SYSTEM - VIDEO DEMO SCRIPT
+==========================================
+
+[INTRODUCTION - 15 seconds]
+"Hello! I'm [Your Name], and I'm presenting my Travel Booking System -
+a full-stack Django web application that enables users to browse travel
+destinations, view vacation packages, and manage bookings. Let's explore
+the key features."
+
+[HOME PAGE - 20 seconds]
+"Starting at the home page, we can see a statistics dashboard displaying
+5 destinations, 5 travel packages, and current bookings. The interface
+features a clean navigation menu and showcases featured destinations like
+Paris, Bali, and Santorini, along with upcoming travel packages."
+
+[DESTINATIONS - 30 seconds]
+"Clicking on Destinations, we can browse all available locations. Each
+destination card provides a preview. Let me open Paris for more details...
+Here we see a comprehensive description of Paris, and below, all available
+travel packages for this destination, such as the 'Romantic Paris Getaway'
+starting at $2,199."
+
+[PACKAGES - 40 seconds]
+"The Packages page offers powerful search and filtering capabilities.
+I can search for specific packages... filter by destination... set a
+price range between, say, $1,500 and $2,000... or show only packages
+with available spots. Let me click on the 'Bali Beach & Culture' package...
+This displays comprehensive details including the price, duration, dates,
+available spots, and most importantly, a complete day-by-day itinerary
+showing exactly what travelers can expect each day of their trip."
+
+[CREATE BOOKING - 25 seconds]
+"Now let's create a booking. Clicking 'Create New Booking'... I'll select
+a customer - let's choose John Smith... select the Tokyo Adventure Week
+package... enter 2 people... and notice how the system automatically
+calculates the total price at $4,998. Submitting the form creates the
+booking successfully."
+
+[UPDATE BOOKING - 20 seconds]
+"On the Bookings page, I can filter by status - let's show only pending
+bookings... Clicking on a booking displays all the details including the
+customer information, package details, and current status. I can edit this
+booking and change the status from Pending to Confirmed... and save the
+changes."
+
+[DELETE - 15 seconds]
+"Delete operations are protected with confirmation pages. When attempting
+to delete a customer, the system warns about the impact - in this case,
+that it will also delete associated bookings - preventing accidental data
+loss. I'll cancel this action."
+
+[RELATIONSHIPS - 15 seconds]
+"The application demonstrates clear data relationships. Destinations link
+to their packages, customers have booking histories, and each booking
+connects a customer to a specific package and destination - creating a
+complete travel booking ecosystem."
+
+[CONCLUSION - 10 seconds]
+"This demonstrates a complete Django application with full CRUD operations,
+advanced search and filtering, foreign key relationships between four models,
+and a professional, user-friendly interface. Thank you for watching!"
+
+==========================================
+TOTAL TIME: ~3 minutes
+
+TIPS FOR RECORDING:
+- Speak at a natural, moderate pace
+- Pause briefly between sections
+- Keep your mouse movements smooth
+- If you stumble, pause and continue
+- Sound enthusiastic about your project!

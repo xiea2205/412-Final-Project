@@ -1,7 +1,11 @@
+# File: admin.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: Django admin interface configuration for the Travel Booking System.
+# Customizes the admin panel for managing destinations, packages, customers, and bookings.
+
 from django.contrib import admin
 from .models import Destination, TravelPackage, Customer, Booking
-
-# Register your models here.
 
 @admin.register(Destination)
 class DestinationAdmin(admin.ModelAdmin):

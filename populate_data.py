@@ -1,7 +1,9 @@
-"""
-Script to populate the database with sample data for the travel booking application.
-Run this script with: python populate_data.py
-"""
+# File: populate_data.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: Database population script for the Travel Booking System.
+# Creates sample data including destinations, travel packages, customers, and bookings.
+# Run with: python populate_data.py
 import os
 import django
 from datetime import date, timedelta

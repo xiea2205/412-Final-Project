@@ -1,8 +1,12 @@
+# File: models.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: Data models for the Travel Booking System application.
+# Defines four interconnected models: Destination, TravelPackage, Customer, and Booking.
+
 from django.db import models
 from django.core.validators import MinValueValidator
 from decimal import Decimal
-
-# Create your models here.
 
 class Destination(models.Model):
     """

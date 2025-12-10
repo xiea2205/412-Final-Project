@@ -1,3 +1,9 @@
+# File: urls.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: URL routing configuration for the Travel Booking System application.
+# Maps URLs to views for all CRUD operations and list/detail pages.
+
 from django.urls import path
 from . import views
 

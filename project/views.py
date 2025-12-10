@@ -1,3 +1,10 @@
+# File: views.py
+# Author: Anthony Xie (xiea@bu.edu)
+# Date: December 9, 2024
+# Description: View controllers for the Travel Booking System application.
+# Implements CRUD operations using both function-based and class-based views,
+# including search and filtering functionality.
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
